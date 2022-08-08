@@ -11,7 +11,7 @@ function promptForGCloud {
   if [[ $runGC = "n" || $runGC = "N" ]]; then
     bigMessage "Setting up gcloud auth.  This will open a browser."
     read -p "Press [Enter] key to start..."
-    (set -x; gcloud auth application-default login);
+    (set -x; gcloud beta container clusters get-credentials vendasta-central --region us-central1 --project repcore-prod);
   fi
 }
 
