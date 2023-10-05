@@ -24,3 +24,19 @@ function promptForVendasta {
     (set -x; mscli auth login);
   fi
 }
+
+function promptUserForConfigValues {
+  printf "Which environment should this instance read from (e.g. vStore)? [D]emo/prod? ";
+  read env
+  if [[ $env = D* || $env = demo || $env = "" ]]; then
+    env="demo";
+  elif [[ $env = prod ]]; then
+    env="prod";
+  else
+    echo -e "\033[33;7mInvalid selection \"$env\".  Falling back to \"demo\".\033[0m";
+    env="demo";
+  fi;
+
+  promptForGCloud;
+  promptForVendasta;
+}
