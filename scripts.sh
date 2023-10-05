@@ -25,7 +25,7 @@ function promptForVendasta {
   fi
 }
 
-function promptUserForConfigValues {
+function promptForConfigValues {
   printf "Which environment should this instance read from (e.g. vStore)? [D]emo/prod? ";
   read env
   if [[ $env = D* || $env = demo || $env = "" ]]; then
